@@ -1,0 +1,14 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h1><span style="color: #800080;"><strong>ДОСКА ОБЪЯВЛЕНИЙ</strong></span></h1>
+<hr>
+{% if perms.D16.add_post %}
+<a href="{% url 'Post_create' %}">Добавить объявление</a>
+{% endif %}
+
+{% for x in board %}
+<p><h4>{{ x.title }}: {{ x.text|truncatechars:20 }}</h4>   <h6>{{ x.author }}</h6></p>
+{% endfor %}
+
+{% endblock content %}
